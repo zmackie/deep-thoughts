@@ -6,10 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Harlow Malloc">
-<meta name="dcterms.date" content="2023-11-06">
+<meta name="author" content="Albert Rapp">
+<meta name="dcterms.date" content="2023-11-07">
+<meta name="description" content="Recap, quiz, and sharing post for week 1">
 
-<title>deep-thoughts - Post With Code</title>
+<title>Deep Thoughts 🧠 - FastAI Week 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -76,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">deep-thoughts</span>
+    <span class="navbar-title">Deep Thoughts 🧠</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -86,8 +87,8 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/zmackie" rel="" target=""><i class="bi bi-github" role="img">
@@ -103,52 +104,145 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Post With Code</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">news</div>
-                <div class="quarto-category">code</div>
-                <div class="quarto-category">analysis</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Harlow Malloc </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">November 6, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#recap" id="toc-recap" class="nav-link active" data-scroll-target="#recap">Recap</a>
+  <ul class="collapse">
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">Quiz</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">FastAI Week 1</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">fastai</div>
+    <div class="quarto-category">Part 1</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Recap, quiz, and sharing post for week 1
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Albert Rapp </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 7, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="recap" class="level1">
+<h1>Recap</h1>
+<p>This week was basically an intro and some quick examples of using the fastai library in a variety of contexts. Most of the initial demonstration comes in the form of computer vision.</p>
+<p>I ran through the <a href="https://www.kaggle.com/zanadar/fastai-ch1-clean">clean notebook on Kaggle</a>. I also made <a href="https://www.kaggle.com/zanadar/multi-label-bean-rust">my own image classifier that evaluates</a> pictures of bean leaves and labels them with various disease type (or if they’re healthy). <img src="beans.png" class="img-fluid"></p>
+<section id="quiz" class="level2">
+<h2 class="anchored" data-anchor-id="quiz">Quiz</h2>
+<p>I thought it would be valuable to go through the quiz and document my answers and reasoning (if that applies).</p>
+<hr>
+<ol type="1">
+<li><p>Do you need these for deep learning?</p>
+<ul>
+<li>Lots of math T / F</li>
+<li>Lots of data T / F</li>
+<li>Lots of expensive computers T / F</li>
+<li>A PhD T / F</li>
+</ul></li>
+</ol>
+<p><strong>These are all false, although common, misconceptions. I’d say I had these too for a long time. This course convinced me otherwise.</strong></p>
+<ol type="1">
+<li>Name five areas where deep learning is now the best in the world.
+<ol type="1">
+<li>radiology</li>
+<li>go playing</li>
+</ol></li>
+<li>What was the name of the first device that was based on the principle of the artificial neuron? <strong>perception</strong></li>
+<li>Based on the book of the same name, what are the requirements for parallel distributed processing (PDP)?</li>
+</ol>
+<ul>
+<li>a set of processing units (what is this?)</li>
+<li>a state of activation</li>
+<li>an output function for each unit</li>
+<li>a pattern of connectvity (I’m taking all the above to basically be analagous to a perceptron)</li>
+<li>propogation (how do we “push” activities into the model to train it)</li>
+<li>activation rule (how multiple produce an output)</li>
+<li>learning rule (how do we modify a network of perceptrons by “experience”)</li>
+<li>environment</li>
+</ul>
+<ol type="1">
+<li>What were the two theoretical misunderstandings that held back the field of neural networks?</li>
+</ol>
+<ul>
+<li>people missed minsky’s second insight that although a single layer could not approximate functions, multiple layers could</li>
+<li>however multilayered networks were often too slow to be useful (until GPUs)</li>
+</ul>
+<ol type="1">
+<li>What is a GPU?</li>
+</ol>
+<ul>
+<li>A matrix multiplying chip (originballyt designed for graphics)</li>
+</ul>
+<ol type="1">
+<li><p>Open a notebook and execute a cell containing: <code>1+1</code>. What happens? <code>2</code>!</p></li>
+<li><p>Follow through each cell of the stripped version of the notebook for this chapter. Before executing each cell, guess what will happen. https://www.kaggle.com/code/zanadar/fastai-ch1-clean</p></li>
+<li><p>Complete the Jupyter Notebook online appendix. Don’t know what this is….</p></li>
+<li><p>Why is it hard to use a traditional computer program to recognize images in a photo? <strong>How would you describe the steps of this process? “computers are giant morons, not giant brains”</strong></p></li>
+<li><p>What did Samuel mean by “weight assignment”? weight assignments are the value of variables (weights) that are part of the input to our ML program. they affect its operation.</p></li>
+<li><p>What term do we normally use in deep learning for what Samuel called “weights”? parameters</p></li>
+<li><p>Draw a picture that summarizes Samuel’s view of a machine learning model. <img src="learning-machine.jpg" class="img-fluid"></p></li>
+<li><p>Why is it hard to understand why a deep learning model makes a particular prediction? Sheer volume of model interconnections, parameters. This is called interprability</p></li>
+<li><p>What is the name of the theorem that shows that a neural network can solve any mathematical problem to any level of accuracy? The universal approximation theorem</p></li>
+<li><p>What do you need in order to train a model? Labeled data</p></li>
+<li><p>How could a feedback loop impact the rollout of a predictive policing model? Arrests/area -&gt; activity is concentrated in that area -&gt; more arrests there. This is the problem of “overfitting” and happens when a model doesn’t generalize/</p></li>
+<li><p>Do we always have to use 224×224-pixel images with the cat recognition model? No but thats a convention</p></li>
+<li><p>What is the difference between classification and regression? classification: categories. regression: numerical value</p></li>
+<li><p>What is a validation set? What is a test set? Why do we need them? validation is used to check the model after training and as part of the process of creating the model to make sure our model generalized. Test set is a further ‘secret’ set of data that is used to check the model at the end.</p></li>
+<li><p>What will fastai do if you don’t provide a validation set? Create one on its own</p></li>
+<li><p>Can we always use a random sample for a validation set? Why or why not? No.&nbsp;For example in time series we can’t just randomly select points as they won’t make sense for the input. we would set aside a validation set thats a portion of the timeline.</p></li>
+<li><p>What is overfitting? Provide an example. When a model is trained for a long time on data, it can learn to recognize the exact data in the training set and not generalize. For example it would recognize all the individual cats, but not generalze to a <em>new</em> cat.</p></li>
+<li><p>What is a metric? How does it differ from “loss”? an indication of performance of the model against the validation data. loss can be the same, but it might differ in order to be useful as a function to update the parameters/weights</p></li>
+<li><p>How can pretrained models help? Taking a model where there are existing layers that can do something and specializign the last layer(s) to our specific task. For example earlier layers may be able to recognize shapes, edges, textures, etc. and then we use transfer learning to tune that model to recognize cats and dogs.</p></li>
+<li><p>What is the “head” of a model? the top layer</p></li>
+<li><p>What kinds of features do the early layers of a CNN find? How about the later layers? In a vision model, more basic shapes like edges and gradients. Later is more specific elaborations of those earlier layers, like “multiple layers” or patterns</p></li>
+<li><p>Are image models only useful for photos? No.&nbsp;Different kinds of data can be turned into images and then used to train a model.</p></li>
+<li><p>What is an “architecture”? An organziation of layers within a model, albeit as a template for a function. A model is an architecture + a set of parameters,</p></li>
+<li><p>What is segmentation? Labelling pixels in an imge.</p></li>
+<li><p>What is <code>y_range</code> used for? When do we need it? in a collabarative model, with a regression prediction, <code>y_range</code> tells us the range of possible predictions</p></li>
+<li><p>What are “hyperparameters”? Choices about parameters themselves (such as learning rates and data augmentation strategies), that lend meaning to the weights</p></li>
+<li><p>What’s the best way to avoid failures when using AI in an organization? Have a good test dataset to check a model against.</p></li>
+</ol>
 
 
-<p>This is a post with executable code.</p>
-
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

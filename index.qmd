@@ -1,14 +1,19 @@
 ---
-title: "deep-thoughts"
-listing:
-  contents: posts
-  sort: "date desc"
-  type: default
-  categories: true
-  sort-ui: false
-  filter-ui: false
-page-layout: full
-title-block-banner: true
+title: "About"
+image: profile.jpg
+about:
+  template: broadside
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com
+    - icon: github
+      text: Github
+      href: https://github.com/zmackie
+
 ---
 
+> Computers, as any programmer will tell you, are giant morons, not giant brains
+> - Arthur Samuel
 
+Thoughts, notes, experiments, and useful tidbits I find in my deeplearning journey.
