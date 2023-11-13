@@ -2,7 +2,7 @@
   {
     "objectID": "blog.html",
     "href": "blog.html",
-    "title": "deep-thoughts",
+    "title": "Giant Morons",
     "section": "",
     "text": "FastAI Lesson 2\n\n\n\n\n\n\n\nfastai\n\n\nPart 1\n\n\n\n\nRecap, quiz, and sharing post for lesson 2\n\n\n\n\n\n\nNov 13, 2023\n\n\nZander Mackie\n\n\n\n\n\n\n  \n\n\n\n\nFastAI Week 1\n\n\n\n\n\n\n\nfastai\n\n\nPart 1\n\n\n\n\nRecap, quiz, and sharing post for week 1\n\n\n\n\n\n\nNov 7, 2023\n\n\nZander Mackie\n\n\n\n\n\n\nNo matching items"
   },
@@ -37,8 +37,8 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Deep Thoughts 🔬",
+    "title": "Giant Morons: a blog about deep learning 🔬",
     "section": "",
-    "text": "Computers, as any programmer will tell you, are giant morons, not giant brains - Arthur Samuel\n\nThoughts, notes, experiments, and useful tidbits I find in my deep learning journey.\nI’m Zander, a father, a learner, and ever-curious software engineer. I’m captivated by AI developments. This blog aims to document my journey from zero to ML/deep learning practioner.\nAlong the way I’ll be sharing useful things I learn, meta-learnings, and will serve as a public document of my work. I’ll also be making bad jokes. Hope you’re okay with that."
+    "text": "Computers, as any programmer will tell you, are giant morons, not giant brains - Arthur Samuel\n\nThoughts, notes, experiments, and useful tidbits I find in my deep learning journey.\nI’m Zander, a father, a learner, and ever-curious software engineer. I’m captivated by recent AI developments. This blog aims to document my journey from zero to ML/deep learning practioner.\nAlong the way I’ll be sharing useful things I learn and publicly documenting of my work. I’ll also be making bad jokes. Hope you’re okay with that.\nThe banner image for this blog was created with dall-e"
   }
 ]

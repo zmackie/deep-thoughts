@@ -1,5 +1,5 @@
 ---
-title: "Deep Thoughts 🔬"
+title: "Giant Morons: a blog about deep learning 🔬"
 image: profile.jpg
 about:
   template: broadside
@@ -18,8 +18,10 @@ about:
 
 Thoughts, notes, experiments, and useful tidbits I find in my deep learning journey.
 
-I'm Zander, a father, a learner, and ever-curious software engineer. I'm captivated by AI developments.
+I'm Zander, a father, a learner, and ever-curious software engineer. I'm captivated by recent AI developments.
 This blog aims to document my journey from zero to ML/deep learning practioner. 
 
-Along the way I'll be sharing useful things I learn, meta-learnings, and will serve as a public document of my work.
+Along the way I'll be sharing useful things I learn and publicly documenting of my work.
 I'll also be making bad jokes. Hope you're okay with that.
+
+*The banner image for this blog was created with dall-e*

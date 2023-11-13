@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Deep Thoughts 🧠"
+  title: "Giant Morons 🧠"
   site-url: https://zmackie.com
   description: "Deep learning and bad jokes."
   navbar:

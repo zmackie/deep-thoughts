@@ -1,5 +1,5 @@
 ---
-title: "deep-thoughts"
+title: "Giant Morons"
 listing:
   contents: posts
   sort: "date desc"
