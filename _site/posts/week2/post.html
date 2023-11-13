@@ -6,10 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Tristan O’Malley">
-<meta name="dcterms.date" content="2023-11-03">
+<meta name="author" content="Zander Mackie">
+<meta name="dcterms.date" content="2023-11-13">
+<meta name="description" content="Recap, quiz, and sharing post for lesson 2">
 
-<title>Deep Thoughts 🧠 - Welcome To My Blog</title>
+<title>Deep Thoughts 🧠 - FastAI Lesson 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,19 +108,34 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#recap" id="toc-recap" class="nav-link active" data-scroll-target="#recap">Recap</a>
+  <ul class="collapse">
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">Quiz</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Welcome To My Blog</h1>
+<h1 class="title">FastAI Lesson 2</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">news</div>
+    <div class="quarto-category">fastai</div>
+    <div class="quarto-category">Part 1</div>
   </div>
   </div>
 
+<div>
+  <div class="description">
+    Recap, quiz, and sharing post for lesson 2
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -127,14 +143,14 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Tristan O’Malley </p>
+             <p>Zander Mackie </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 3, 2023</p>
+      <p class="date">November 13, 2023</p>
     </div>
   </div>
   
@@ -144,11 +160,54 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>This is the first post in a Quarto blog. Welcome!</p>
-<p><img src="thumbnail.jpg" class="img-fluid"></p>
-<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
+<section id="recap" class="level1">
+<h1>Recap</h1>
+<p>This lesson was all about getting a model deployed to production. It was an occasion for me to make sure I had jupyter working locally and to understand how that flow would work. I used Jeremy’s technique of having an app in notebook and exporting it with dbdev directives, which I thought was pretty valuable as a workflow. I also set myself up on paperspace, which is great!</p>
+<p>This lesson’s clean notebook was basically a recap of lesson 1, with bears instead of cats and dogs or birds.</p>
+<p>I deployed my model to a <a href="https://zmackie-bean-lesions.hf.space/">Huggingface Space</a> using Gradio. This is based on a model I trained last week for recognized bean lesions. So if you happen to be a farmer wanting to evaluated the health of your beans…you know who to call 😸. I skipped the step of using the api for this app. Gradio now has an API client that has to be installed with <code>npm</code>. Which…Im not trying to deploy anything that needs a build step. I wish they hadn’t done that…</p>
+<p>I hit a few hiccups which were easily navigated with some googling. Mainly these were API changes in various libraries. Inevitable as things move along but bumps nonetheless.</p>
+<section id="quiz" class="level2">
+<h2 class="anchored" data-anchor-id="quiz">Quiz</h2>
+<ol type="1">
+<li>Provide an example of where the bear classification model might work poorly in production, due to structural or style differences in the training data. Not great at images that differ in stylisitically. The camera to recognize the bears might be mounted upside down.</li>
+<li>Where do text models currently have a major deficiency? They’re plausible, but are they correct?!</li>
+<li>What are possible negative societal implications of text generation models? Spreading false information that’s very convincing</li>
+<li>In situations where a model might make mistakes, and those mistakes could be harmful, what is a good alternative to automating a process? Human in the loop.</li>
+<li>What kind of tabular data is deep learning particularly good at? where the column data might be very diverse</li>
+<li>What’s a key downside of directly using a deep learning model for recommendation systems? The recommendations might not actually be helpful. eg. they might recommend books you already have</li>
+<li>What are the steps of the Drivetrain Approach? objectives, levers, data, model (how the levers influence the objectives)</li>
+<li>How do the steps of the Drivetrain Approach map to a recommendation system? objective: drive more sales levers: ranking of the recommendations data: past choices of the user model: two models that are contingent on seeing or not seeing the recommendation</li>
+<li>Create an image recognition model using data you curate, and deploy it on the web.</li>
+<li>What is <code>DataLoaders</code>? Generic class for getting data into a learner</li>
+<li>What four things do we need to tell fastai to create <code>DataLoaders</code>?</li>
+<li>input and output types</li>
+<li>how get get the items</li>
+<li>how to label the items</li>
+<li>how to create a validaton set</li>
+<li>What does the <code>splitter</code> parameter to <code>DataBlock</code> do? telling fai how to split of a validation set</li>
+<li>How do we ensure a random split always gives the same validation set? seed will set the randomness</li>
+<li>What letters are often used to signify the independent and dependent variables? x for independent y for dependent</li>
+<li>What’s the difference between the crop, pad, and squish resize approaches? When might you choose one over the others? crop = cut pad = fill in with black squish = distort to fit chose might be dictated by the particulars of the data</li>
+<li>What is data augmentation? Why is it needed? creating random variations that seem different (to a model) but don’t actually change in meaning</li>
+<li>What is the difference between <code>item_tfms</code> and <code>batch_tfms</code>? item is single, batch is a group</li>
+<li>What is a confusion matrix? a nXn matrix that plots what the model was predicted vs the correct labels. the center diagonal is correct guess. others a re off somehow. lets us see issues in data or model. uses the validation set.</li>
+<li>What does <code>export</code> save? a pkl file of the trained model</li>
+<li>What is it called when we use a model for getting predictions, instead of training? inference</li>
+<li>What are IPython widgets?</li>
+<li>When might you want to use CPU for deployment? When might GPU be better? cpu is more cost effective, easier to manage, more available, and perfectly suitable for running inferences.</li>
+<li>What are the downsides of deploying your app to a server, instead of to a client (or edge) device such as a phone or PC? network issues, latency, sensitive data, complexity of runnning infra</li>
+<li>What are three examples of problems that could occur when rolling out a bear warning system in practice? data is video vs pictures, bears in are in novel positions or lighting, night pictures, speed of results</li>
+<li>What is “out-of-domain data”? data that differs a lot to what was seen in training</li>
+<li>What is “domain shift”? type of data changes over time so the initial model doesnt apply so much. the use of the model actually changes things, so the model has to be adjusted.</li>
+<li>What are the three steps in the deployment process?</li>
+<li>manual steps, human checks it all</li>
+<li>limited scope. time or geography limited. careful supervisions</li>
+<li>gradual expansion. need reporting. need to consider what can go wrong.</li>
+</ol>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
