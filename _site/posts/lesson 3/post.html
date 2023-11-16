@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zander Mackie">
+<meta name="dcterms.date" content="2023-11-15">
+<meta name="description" content="Recap, quiz, and sharing post for lesson 3">
+
+<title>Giant Morons 🧠 - FastAI Lesson 3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Giant Morons 🧠</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zmackie" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#recap" id="toc-recap" class="nav-link active" data-scroll-target="#recap">Recap</a>
+  <ul class="collapse">
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">Quiz</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">FastAI Lesson 3</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">fastai</div>
+    <div class="quarto-category">Part 1</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Recap, quiz, and sharing post for lesson 3
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zander Mackie </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 15, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="recap" class="level1">
+<h1>Recap</h1>
+<p>This was a tough lesson. I started calling this the “week 3 wall” because I felt just totally stopped in my tracks by this one. Conceptually it just took me a a long time to wrap my head around this one. One of the things I’ve had to embrace with this course to make progress is just allowing myself to not understand all the details of something. Like for example I get the idea of using a derivative to optimize a quadratic function. Somehow intuitively I can make sense of the image of a tangent line moving down a function and slowly flattening out at the bottom of the graph. But putting all the pieces together has been a struggle. I worked through the titanic example on my own, and that helped it make a bit more sense. What helped there was going from the linear function to the super simple two-layer nueral net. And applying matrix multiplication there was helpful to cement the concept.</p>
+<p>As Jeremy has said time and again, tenacity is super important. I wasn’t going to let this week stall me. To inspire myself I generated some fun pictures in Dall-e of especially tenacious animals. Here’s a honey-badger for you viewing pleasure. I encourage you to adopt it as your <code>fastai</code> spirit animal.</p>
+<p align="center">
+<img src="honey_badger.jpg" alt="Sublime's custom image">
+</p>
+<p>One of the crucial things that took me a long time to understand is the relationship between the loss function and the model. For some reason I had the idea that the loss function was related to the model somehow, like in some kind of mathematical sense. But the crucial thing here to understand is that the model (which includes the architecture and the parameters) is tangential to the loss function in SGD. The loss function is a way to understand the <em>performance</em> of the model WRT a known answer. SGD is a method of using the loss function (which is somewhat arbitrary - at least that’s what it seems like a the moment) to optimize or train the values of the weights of the model. The “gradient” is actually a calculation of the slope of the loss function WRT the input parameters, and gradients might be many gradients - one for each parameter. The gradient is calculated using the derivative of the loss function, which says for a change in the input, how will the loss be changed. What is mysterious to me is the backwards/back propogation step. What’s ultimately confusing to me is the fact that the loss function helps the input parameters adjust, but the input parameters are not directly involved in the loss function at all! They loss function only uses the predictions and the known answers. So how does the loss function help the parameters adjust? I think this is the backwards/back propogation step, but I’m not sure. I think I need to do some more reading on this. The key seems to be the “chain rule”.</p>
+<blockquote class="blockquote">
+<p>The chain rule is a fundamental principle in calculus that states how to compute the derivative of a composite function. Concisely, it can be stated as:</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>“If a function <span class="math inline">\(( y )\)</span> is a composite of another function <span class="math inline">\((u)\)</span>, such that <span class="math inline">\((y=f(u))\)</span> and <span class="math inline">\((u=g(x))\)</span>, then the derivative of <span class="math inline">\(( y )\)</span> with respect to <span class="math inline">\(( x )\)</span> is the product of the derivative of ( f ) with respect to ( u ) and the derivative of ( g ) with respect to ( x ). In mathematical terms, it is expressed as <span class="math inline">\(( \frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx} )\)</span>.”</p>
+</blockquote>
+<p><span class="math inline">\(test\)</span></p>
+<p>Conceptually I can start to grasp that there is function composition going on, but the details are still a bit fuzzy. Ultimately the way I’m thinking about it is that the prediction is itself the output of a function. But thinking about the prediction as an arbitary set of values isn’t quite correct. Because I started thinking, well if the prediction is just an array of values, how is it possible to know anything about what produced those values? And in the general sense its not. But this is what <code>pytorch.requires_grad</code> allows us to do. Setting that parameter on the input actually causes the library to records a computation graph and the prediction (or the output of running the params through that graph) will be statefully associated with the input parameters via that graph, which is what allows us to call <code>.backward()</code> on the prediction and have the gradients calculated. Because the prediction has knowledge of what produced it, its possible to then follow that chain of operations backwards, calculating the gradients of each step, and then using those gradients to adjust the parameters. I think this is the key to understanding the backwards/back propogation step.</p>
+<p>Getting the <a href="https://zmackie-dog-cat-breeds.hf.space/">breed recognizer model deployed</a> was a bit trickier than the last model. Due to the use of some of the models from <code>timm</code>, I entered into some fiddly dependency dancing. Luckily other people had figured this out for me and so a quick google (which turned up an answer on the fastai forums) turned up a fix. One of the weirder things that I’m struggling with in terms of deployment is how to manage dependencies for an app built in this way. Running the app from jupyterhub and running a <code>pip install</code> puts the packages into the conda environment that jupyterhub is running in. This makes it slightly hard to understand the dependencies and respective versions that need to go into the <code>requirements.txt</code> file. Ultimately I had to use <code>--report</code> which gives an output of package versions and then use that to populate the <code>requirements.txt</code> file. I’m not sure if this is the best way to do this, but it’s what I’ve got for now. Probably there’s a a better way to use poetry or <code>venv</code> or something to manage this.</p>
+<p>Its still totally magical to me, though, that I can actually make these things!</p>
+<section id="quiz" class="level2">
+<h2 class="anchored" data-anchor-id="quiz">Quiz</h2>
+<ol type="1">
+<li>How is a grayscale image represented on a computer? How about a color image? Images are represented as matrixes in a computer, with every cell in the matrix representing a pixel. In a grayscale image, the value of the cell is the intensity of the pixel. In a color image, the value of the cell is a vector of three values, representing the intensity of the red, green, and blue channels of the pixel.</li>
+<li>How are the files and folders in the <code>MNIST_SAMPLE</code> dataset structured? Why? This dataset has a csv of labels and <code>Train</code> and ‘valid’ folder. Within each folder, there is a subfolder for each label, eg <code>/train/3</code>. The data is organized this way because this is a common structure and allows for easy loading (<code>dataLoader</code> can read the parent folder and infer the labels from the subfolders).</li>
+<li>Explain how the “pixel similarity” approach to classifying digits works. This approach approach takes the matrix of threes and calculates a mean matrix. We then compare a given image to this mean image. The comparison is performed using something a function that handles negative numbers but taking the absolute values or squaring the squaring the values. This is necessary because simple summing of the matrix resulting from taking the difference will cause some numbers to cancel each other out. The operation to deal with negative numbers (squaring or absolute value) is performed before calculating the mean. The result of this operation is a single number, which is the “distance” between the image and the mean image. The image is then classified as the label of the mean image with the smallest distance.</li>
+<li>What is a list comprehension? Create one now that selects odd numbers from a list and doubles them. A list comprehension is a handy way of dealing with lists in python. It allows you to perform an operation on each element of a list and return a new list. For example, <code>[x^2 for x in range(10) if x%2==1]</code>will return a list of the odd numbers from 0 to 9, doubled.</li>
+<li>What is a “rank-3 tensor”? A rank-3 tensor is a tensor with 3 dimensions. A rank-0 tensor is a single number, also called a scalar. A rank-1 tensor is a vector. A rank-2 tensor is a matrix. A rank-3 tensor is a 3-dimensional matrix, meaning a matrix of matrixes.</li>
+<li>What is the difference between tensor rank and shape? How do you get the rank from the shape? Rank is the number of dimensions in a tensor. Shape is the size of each dimension. You can get the rank from the shape by counting the number of elements in the shape. For example <code>Tensor([1,2,3,4]).shape</code> will return <code>torch.Size([4])</code> which has a rank of 1.</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> tensor([<span class="dv">1</span>],[<span class="dv">1</span>],[<span class="dv">1</span>]).shape</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>torch.Size([<span class="dv">3</span>, <span class="dv">1</span>]) <span class="co"># rank 2, three rows, one column</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># stacked_threes is a a rank 3 tensor</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># it has shape torch.Size([6131, 28, 28]) </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>stacked_threes[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>].ndim <span class="co"># rank 0, ie scalar, ie raw value</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>stacked_threes[<span class="dv">0</span>][<span class="dv">0</span>].ndim <span class="co"># rank 1, ie vector</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>stacked_threes[<span class="dv">0</span>].ndim <span class="co"># rank 2, ie matrix</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>stacked_threes.ndim <span class="co"># rank 3, ie 3-dimensional matrix</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>What are RMSE and L1 norm? These are loss functions. RMSE is the root mean squared error. It is the square root of the mean of the squared differences between the predictions and the actual values. The L1 norm is the mean of the absolute value of the differences between the predictions and the actual values.</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RMSE</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rmse(preds, targets):</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ((preds<span class="op">-</span>targets)<span class="op">**</span><span class="dv">2</span>).mean().sqrt()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># L1 norm</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> l1(preds, targets):</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (preds<span class="op">-</span>targets).<span class="bu">abs</span>().mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>How can you apply a calculation on thousands of numbers at once, many thousands of times faster than a Python loop? Using matrix multiplication. Matrix multiplication is a way of performing a calculation on a matrix of numbers. It is much faster than a python loop because it is implemented in C, which is much faster than python. The operation happens on the GPU, which is designed for this kind of operation.</li>
+<li>Create a 3×3 tensor or array containing the numbers from 1 to 9. Double it. Select the bottom-right four numbers.</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> a <span class="op">=</span> torch.tensor(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">10</span>)).reshape(<span class="dv">3</span>,<span class="dv">3</span>)<span class="op">*</span><span class="dv">2</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tensor([[ <span class="dv">2</span>,  <span class="dv">4</span>,  <span class="dv">6</span>],</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        [ <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">12</span>],</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">18</span>]])</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> a[<span class="dv">1</span>:,<span class="dv">1</span>:]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>tensor([[<span class="dv">10</span>, <span class="dv">12</span>],</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">16</span>, <span class="dv">18</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>What is broadcasting? Broadcasting is the ability of pytorch to perform operations on tensors of different shapes. For example, if you have a rank-1 tensor and a rank-2 tensor, pytorch will automatically expand the rank-1 tensor to match the shape of the rank-2 tensor. This is useful because it allows you to perform operations on tensors of different shapes without having to manually reshape them.</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> a <span class="op">=</span> torch.tensor([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> b <span class="op">=</span> torch.tensor([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]])</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> a<span class="op">+</span>b</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>tensor([[<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>],</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>]])</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> a.broadcast_to((<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>tensor([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]])</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> b.broadcast_to((<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>tensor([[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>         [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]]])</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> b.broadcast_to((<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>tensor([[[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>         [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]],</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        [[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>         [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Are metrics generally calculated using the training set, or the validation set? Why? Metrics are calculated using the validation set. We do this because we want to make sure the model is training to become generalized. If we used the training set, we would be optimizing the model to perform well on the training set, but we wouldn’t know if it was generalizing well.</li>
+<li>What is SGD? SGD is a way of optimizing a function, say for examples <span class="math inline">\(y=x^2\)</span>. SGD is a way of finding the minimum of this function. It does this by using the derivative to calculate the gradient, ie the slope at a particular point. The gradient tells us how changing the input parameters will change the output. If the gradient is positive, then increasing the input will increase the output. If the gradient is negative, then increasing the input will decrease the output. The gradient is calculated at a particular point, and then the input is adjusted by a small amount in the opposite direction of the gradient. This is repeated until the gradient is zero, which means that the input is at the minimum of the function. We are trying to minimize the function in our case because the function represents the loss of our model ie the gap between our model’s prediction and the actual value of the input.</li>
+<li>Why does SGD use mini-batches? We use mini-batches in order to speed up the calculation in SGD. When we are optimizing, we are usually doing so over a large number of parameters. If we were to calculate the gradient for each parameter, it would take a long time. Instead, we can calculate the gradient for a small batch of parameters (as an average of the items in the batch), and then use that to adjust the parameters in the batch. This is much faster than calculating the gradient for each parameter individually.</li>
+<li>What are the seven steps in SGD for machine learning?</li>
+<li>Initialize the parameters with random values</li>
+<li>Calculate the predictions</li>
+<li>Calculate the loss</li>
+<li>Calculate the gradients, which approximates how the paramters need to change to reduce the loss</li>
+<li>Adjust the parameters by a small amount in the opposite direction of the gradient. ie If the gradient is positive, then decrease the parameter. If the gradient is negative, then increase the parameter.</li>
+<li>Repeat steps 2-5 until the loss is small enough for our purposes</li>
+<li>How do we initialize the weights in a model? Randomly. That’s the “stochastic” part of SGD. We initialize the weights randomly because we don’t know what the optimal weights are. We are trying to find them. So we start with random weights and then use SGD to adjust them.</li>
+<li>What is “loss”? Loss is a calculation of the difference between the model’s prediction and the actual value. It is a way of measuring how well the model is performing.</li>
+<li>Why can’t we always use a high learning rate? If the learning rate is too high, we will bounce our parameters around, possible never arriving at the minimum. If the learning rate is too low, it will take a long time to arrive at the minimum.</li>
+<li>What is a “gradient”? A gradient is a calculation of the slope of a function at a particular point. It tells us how changing the input parameters will change the output. Its the actual specific value of the derivative at a particular point in the loss function.</li>
+<li>Do you need to know how to calculate gradients yourself? Nope, pytorch does it for us.</li>
+<li>Why can’t we use accuracy as a loss function? Accuracy is generally steppy. Meaning that an improvement of 0.1% of our model a big deal, but might not immediately result in flipping one incorrect prediction to correct. But we want to be able to make small adjustments to our parameters. So we need a loss function that is smooth, meaning that small changes in the parameters will result in small changes in the loss. Smoothness also allows us to easily find gradients and derivatives.</li>
+<li>Draw the sigmoid function. What is special about its shape?</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sigmoid(x):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>torch.exp(<span class="op">-</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Sigmoid takes all inputs and normalizes them into a value between 0 and 1. This allows easy optimization using SGD. 1. What is the difference between a loss function and a metric? A loss function has to be smooth, meaning that small changes in the parameters cause a response in the loss. Smoothness also allows us to easily find gradients and derivatives. A metric doesn’t have to be smooth. It just has to be a way of measuring how well the model is performing. A metric, on the other hand, is really what <em>we</em> care about. We care about accuracy, but this might not be amendable to optimization using SGD. As a human, we want to focus on this, rather than loss, in judging our model’s performance. The computer doing the optimizing, on the other hand, will use the loss to do its work. Interestingly loss is sometimes a compromise between two needs: our goal with the model and the ability of the function to be optimized using its gradient. 1. What is the function to calculate new weights using a learning rate?</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>new_weight <span class="op">=</span> old_weight <span class="op">-</span> gradient<span class="op">*</span>learning_rate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>What does the <code>DataLoader</code> class do? A <code>DataLoader</code> allows any python collection to be treated as an iterator. It has built in functionality to create batches and allows for shuffling, which improves the performance of training, as it gives our model variety. Notice below that listing the <code>dl</code> multiple times will return different batches.</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> coll <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>,<span class="dv">26</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> dl <span class="op">=</span> DataLoader(coll, batch_size<span class="op">=</span><span class="dv">4</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">list</span>(dl)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>[tensor([<span class="dv">13</span>, <span class="dv">17</span>, <span class="dv">23</span>, <span class="dv">16</span>]), tensor([ <span class="dv">4</span>,  <span class="dv">2</span>, <span class="dv">12</span>, <span class="dv">15</span>]), tensor([ <span class="dv">5</span>, <span class="dv">22</span>, <span class="dv">10</span>, <span class="dv">19</span>]), tensor([ <span class="dv">7</span>, <span class="dv">25</span>, <span class="dv">21</span>, <span class="dv">24</span>]), tensor([ <span class="dv">6</span>, <span class="dv">20</span>,  <span class="dv">8</span>,  <span class="dv">9</span>]), tensor([ <span class="dv">3</span>, <span class="dv">11</span>, <span class="dv">18</span>, <span class="dv">14</span>])]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">list</span>(dl)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>[tensor([<span class="dv">17</span>, <span class="dv">16</span>, <span class="dv">22</span>, <span class="dv">24</span>]), tensor([<span class="dv">21</span>,  <span class="dv">6</span>, <span class="dv">12</span>,  <span class="dv">5</span>]), tensor([<span class="dv">14</span>,  <span class="dv">8</span>,  <span class="dv">4</span>, <span class="dv">20</span>]), tensor([<span class="dv">15</span>, <span class="dv">13</span>, <span class="dv">18</span>,  <span class="dv">9</span>]), tensor([<span class="dv">11</span>,  <span class="dv">7</span>, <span class="dv">23</span>, <span class="dv">25</span>]), tensor([<span class="dv">19</span>,  <span class="dv">2</span>,  <span class="dv">3</span>, <span class="dv">10</span>])]</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="bu">list</span>(dl)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>[tensor([<span class="dv">12</span>, <span class="dv">25</span>, <span class="dv">24</span>,  <span class="dv">4</span>]), tensor([ <span class="dv">5</span>, <span class="dv">22</span>,  <span class="dv">2</span>,  <span class="dv">3</span>]), tensor([<span class="dv">13</span>, <span class="dv">21</span>, <span class="dv">23</span>, <span class="dv">14</span>]), tensor([<span class="dv">10</span>, <span class="dv">17</span>,  <span class="dv">6</span>, <span class="dv">18</span>]), tensor([<span class="dv">15</span>,  <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">20</span>]), tensor([<span class="dv">11</span>, <span class="dv">16</span>,  <span class="dv">7</span>,  <span class="dv">9</span>])]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Write pseudocode showing the basic steps taken in each epoch for SGD.</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> each opoch:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> <span class="cf">for</span> each batch</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> make a prediction</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> calculate the loss</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> calculate the gradients</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> updates the parameters based on the gradients <span class="op">*</span> lr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Create a function that, if passed two arguments <code>[1,2,3,4]</code> and <code>'abcd'</code>, returns <code>[(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]</code>. What is special about that output data structure?</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> special(a, b):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="bu">list</span>(<span class="bu">zip</span>(a,b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This structure is how pythorch expects to receive datasets. The first item in the tuple is the independant variable. The second item is the dependent variable. In other words these are the inputs and the targets of the model. 1. What does <code>view</code> do in PyTorch? View allows pytorch to change the shape of a tensor without changing its contents. The new shape has to be compatible with the existing contents. For example a <code>tensor([1,2,3,4])</code> can be reshaped into a <code>tensor([[1,2],[3,4]])</code> because the number of elements is the same.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> a <span class="op">=</span> torch.tensor(<span class="bu">range</span>(<span class="dv">1</span>,<span class="dv">10</span>))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> a</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>tensor([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>])</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> a.view(<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>tensor([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>],</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>What are the “bias” parameters in a neural network? Why do we need them? The formula for a line is <span class="math inline">\(y=w*x+b\)</span>. Bias is the <span class="math inline">\(b\)</span> in this formula. This allows our function to be more flexible, as in input of zero won’t always have to result in an output of zero.</li>
+<li>What does the <code>@</code> operator do in Python? The <code>@</code> operator performs matrix multiplication.</li>
+<li>What does the <code>backward</code> method do? The <code>backward</code> method calculates the gradients input parameters WRT the output of loss function. It does this by following the chain rule. It calculates the gradient of the loss function with respect to the output of the model, then the gradient of the output of the model with respect to the input parameters. It does this by following the computation graph that was created when the model was run. In order to be able to do this, the input params tensor need to have <code>requires_grad</code> set to <code>True</code>.</li>
+<li>Why do we have to zero the gradients? We do this after we update the input parameters. This is because the gradients are accumulated. In other words, if we don’t zero them, they will continue to increase. We want to start fresh with each batch.</li>
+<li>What information do we have to pass to <code>Learner</code>? We have to pass the data, the model, the loss function, and the optimizer function (ie SGD), and optionally a metric function.</li>
+<li>Show Python or pseudocode for the basic steps of a training loop.</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> unpack our dl</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> calculate the loss, which implies making a prediciton <span class="cf">with</span> the model <span class="kw">and</span> comparing it to the actual label</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> calculate the gradients</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> update the parameters by parsm <span class="op">-=</span> gradients <span class="op">*</span> lr</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="op">-</span> zero the gradients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li><p>What is “ReLU”? Draw a plot of it for values from <code>-2</code> to <code>+2</code>. A nonlinear function. For negative values its output is zero. For positive values its output is the input value.</p></li>
+<li><p>What is an “activation function”? These are the outputs of a layer in a nueral network.</p></li>
+<li><p>What’s the difference between <code>F.relu</code> and <code>nn.ReLU</code>? <code>F.relu</code> is a function. <code>nn.ReLU</code> is a class. They both do the same thing, but <code>nn.ReLU</code> is an object that can be used in a model.</p></li>
+<li><p>The universal approximation theorem shows that any function can be approximated as closely as needed using just one nonlinearity. So why do we normally use more? We use more because it allows us to have fewer input parameters, which makese the model faster to train.</p></li>
+<li><p>Create your own implementation of <code>Learner</code> from scratch, based on the training loop shown in this chapter.</p></li>
+<li><p>Complete all the steps in this chapter using the full MNIST datasets (that is, for all digits, not just 3s and 7s). This is a significant project and will take you quite a bit of time to complete! You’ll need to do some of your own research to figure out how to overcome some obstacles you’ll meet on the way.</p></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
