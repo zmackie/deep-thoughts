@@ -27,11 +27,29 @@ One of the crucial things that took me a long time to understand is the relation
 
 > "If a function $( y )$ is a composite of another function $(u)$, such that $(y=f(u))$ and $(u=g(x))$, then the derivative of $( y )$ with respect to $( x )$ is the product of the derivative of ( f ) with respect to ( u ) and the derivative of ( g ) with respect to ( x ). In mathematical terms, it is expressed as $( \frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx} )$."
 
-$test$
 
 Conceptually I can start to grasp that there is function composition going on, but the details are still a bit fuzzy. Ultimately the way I'm thinking about it is that the prediction is itself the output of a function. But thinking about the prediction as an arbitary set of values isn't quite correct. Because I started thinking, well if the prediction is just an array of values, how is it possible to know anything about what produced those values? And in the general sense its not. But this is what `pytorch.requires_grad` allows us to do. Setting that parameter on the input actually causes the library to records a computation graph and the prediction (or the output of running the params through that graph) will be statefully associated with the input parameters via that graph, which is what allows us to call `.backward()` on the prediction and have the gradients calculated. Because the prediction has knowledge of what produced it, its possible to then follow that chain of operations backwards, calculating the gradients of each step, and then using those gradients to adjust the parameters. I think this is the key to understanding the backwards/back propogation step. 
 
 Getting the [breed recognizer model deployed](https://zmackie-dog-cat-breeds.hf.space/) was a bit trickier than the last model. Due to the use of some of the models from `timm`, I entered into some fiddly dependency dancing. Luckily other people had figured this out for me and so a quick google (which turned up an answer on the fastai forums) turned up a fix. One of the weirder things that I'm struggling with in terms of deployment is how to manage dependencies for an app built in this way. Running the app from jupyterhub and running a `pip install` puts the packages into the conda environment that jupyterhub is running in. This makes it slightly hard to understand the dependencies and respective versions that need to go into the `requirements.txt` file. Ultimately I had to use `--report` which gives an output of package versions and then use that to populate the `requirements.txt` file. I'm not sure if this is the best way to do this, but it's what I've got for now. Probably there's a a better way to use poetry or `venv` or something to manage this.
+
+I also found it valuable to run through pytorchs [basic tensor tutorial](https://pytorch.org/tutorials/beginner/basics/tensor_tutorial.html) to wrap my head around this datatype a bit more.
+I found myself reading the [torch/tensor Docs](https://pytorch.org/docs/stable/tensors.html) a lot, and noticed that the `torch.method()` docs usually have examples, which makese it easier to understand things. However playing with the stuff in my terminal was always the most illuminating.
+
+```python
+>>> t = torch.randint(high=10,size=(2,3))
+>>> t
+tensor([[8, 0, 7],
+        [0, 7, 3]])
+>>> t.T
+tensor([[8, 0],
+        [0, 7],
+        [7, 3]])
+>>> t.T.shape
+torch.Size([3, 2])
+>>> t.shape
+torch.Size([2, 3])
+```
+
 
 Its still totally magical to me, though, that I can actually make these things!
 
