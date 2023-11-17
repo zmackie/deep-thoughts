@@ -246,51 +246,6 @@ extra credit 😏:
 <details>
 1. Create your own implementation of `Learner` from scratch, based on the training loop shown in this chapter.
 
-Here's some out put from that, but check the full notebook for better context
-{{< embed test_learner.ipynb >}}
-
-This is some scratch code.
-<details>
-```python
-class Learner():
-  def __init__(self, model, loss_func, optimizer, data):
-    self.model = model
-    self.loss_func = loss_func
-    self.optimizer = optimizer
-    self.data = data
-
-  def fit(self, epochs):
-    for epoch in range(epochs):
-      for xb, yb in self.data:
-        preds = self.model(xb)
-        loss = self.loss_func(preds, yb)
-        loss.backward()
-        self.optimizer.step()
-        self.optimizer.zero_grad()
-
-class Optimizer():
-  def __init__(self, params, lr):
-    self.params = list(params)
-    self.lr = lr
-  
-  def step(self):
-    for p in self.params:
-      p -= p.grad * self.lr
-
-  def zero_grad(self):
-    for p in self.params:
-      p.grad = None
-
-model = nn.Linear(1,1)
-optimizer = Optimizer(model.parameters(), lr=0.1)
-loss_func = F.mse_loss
-data = DataLoader([(x,y) for x,y in zip(xs,ys)], batch_size=1, shuffle=True)
-learner = Learner(model, loss_func, optimizer, data)
-
-learner.fit(10)
-
-```
-</details>
-1. Complete all the steps in this chapter using the full MNIST datasets (that is, for all digits, not just 3s and 7s). This is a significant project and will take you quite a bit of time to complete! You'll need to do some of your own research to figure out how to overcome some obstacles you'll meet on the way.
+{{< embed test_learner.ipynb echo=true >}}
 
 </details>
