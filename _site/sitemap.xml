@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zmackie.com/blog.html</loc>
-    <lastmod>2023-11-16T19:02:01.292Z</lastmod>
+    <lastmod>2023-11-17T17:46:46.049Z</lastmod>
   </url>
   <url>
     <loc>https://zmackie.com/posts/week2/post.html</loc>
-    <lastmod>2023-11-16T19:02:00.462Z</lastmod>
-  </url>
-  <url>
-    <loc>https://zmackie.com/posts/week1/post.html</loc>
-    <lastmod>2023-11-16T19:01:58.842Z</lastmod>
+    <lastmod>2023-11-17T17:46:44.979Z</lastmod>
   </url>
   <url>
     <loc>https://zmackie.com/posts/lesson 3/post.html</loc>
-    <lastmod>2023-11-16T19:01:59.932Z</lastmod>
+    <lastmod>2023-11-17T17:46:43.899Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zmackie.com/posts/week1/post.html</loc>
+    <lastmod>2023-11-17T17:46:42.009Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zmackie.com/posts/lesson 3/test_learner.html</loc>
+    <lastmod>2023-11-17T17:46:44.339Z</lastmod>
   </url>
   <url>
     <loc>https://zmackie.com/index.html</loc>
-    <lastmod>2023-11-16T19:02:00.782Z</lastmod>
+    <lastmod>2023-11-17T17:46:45.349Z</lastmod>
   </url>
 </urlset>

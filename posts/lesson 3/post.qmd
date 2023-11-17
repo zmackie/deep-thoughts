@@ -57,18 +57,24 @@ Its still totally magical to me, though, that I can actually make these things!
 
 1. How is a grayscale image represented on a computer? How about a color image?
 Images are represented as matrixes in a computer, with every cell in the matrix representing a pixel. In a grayscale image, the value of the cell is the intensity of the pixel. In a color image, the value of the cell is a vector of three values, representing the intensity of the red, green, and blue channels of the pixel.
+
 1. How are the files and folders in the `MNIST_SAMPLE` dataset structured? Why?
 This dataset has a csv of labels and `Train` and 'valid' folder. Within each folder, there is a subfolder for each label, eg `/train/3`.
 The data is organized this way because this is a common structure and allows for easy loading (`dataLoader` can read the parent folder and infer the labels from the subfolders).
+
 1. Explain how the "pixel similarity" approach to classifying digits works.
 This approach approach takes the matrix of threes and calculates a mean matrix. We then compare a given image to this mean image. The comparison is performed using something a function that handles negative numbers but taking the absolute values or squaring the squaring the values. This is necessary because simple summing of the matrix resulting from taking the difference will cause some numbers to cancel each other out. The operation to deal with negative numbers (squaring or absolute value) is performed before calculating the mean. The result of this operation is a single number, which is the "distance" between the image and the mean image. The image is then classified as the label of the mean image with the smallest distance.
+
 1. What is a list comprehension? Create one now that selects odd numbers from a list and doubles them.
 A list comprehension is a handy way of dealing with lists in python. It allows you to perform an operation on each element of a list and return a new list. For example, `[x^2 for x in range(10) if x%2==1]`will return a list of the odd numbers from 0 to 9, doubled.
+
 1. What is a "rank-3 tensor"?
 A rank-3 tensor is a tensor with 3 dimensions. A rank-0 tensor is a single number, also called a scalar. A rank-1 tensor is a vector. A rank-2 tensor is a matrix. A rank-3 tensor is a 3-dimensional matrix, meaning a matrix of matrixes.
+
 1. What is the difference between tensor rank and shape? How do you get the rank from the shape?
 Rank is the number of dimensions in a tensor. Shape is the size of each dimension. You can get the rank from the shape by counting the number of elements in the shape.
-For example `Tensor([1,2,3,4]).shape` will return `torch.Size([4])` which has a rank of 1.
+For example `Tensor([1,2,3,4]).shape` will return `torch.Size([4])` which has a rank 1.
+
 ```python
 >>> tensor([1],[1],[1]).shape
 torch.Size([3, 1]) # rank 2, three rows, one column
@@ -79,7 +85,8 @@ stacked_threes[0][0].ndim # rank 1, ie vector
 stacked_threes[0].ndim # rank 2, ie matrix
 stacked_threes.ndim # rank 3, ie 3-dimensional matrix
 ```
-1. What are RMSE and L1 norm?
+  
+7. What are RMSE and L1 norm?
 These are loss functions. RMSE is the root mean squared error. It is the square root of the mean of the squared differences between the predictions and the actual values. The L1 norm is the mean of the absolute value of the differences between the predictions and the actual values.
 ```python
 # RMSE
@@ -89,7 +96,7 @@ def rmse(preds, targets):
 def l1(preds, targets):
     return (preds-targets).abs().mean()
 ```
-1. How can you apply a calculation on thousands of numbers at once, many thousands of times faster than a Python loop?
+8. How can you apply a calculation on thousands of numbers at once, many thousands of times faster than a Python loop?
 Using matrix multiplication. Matrix multiplication is a way of performing a calculation on a matrix of numbers. It is much faster than a python loop because it is implemented in C, which is much faster than python.
 The operation happens on the GPU, which is designed for this kind of operation.
 1. Create a 3×3 tensor or array containing the numbers from 1 to 9. Double it. Select the bottom-right four numbers.
@@ -102,7 +109,7 @@ tensor([[ 2,  4,  6],
 tensor([[10, 12],
         [16, 18]])
 ```
-1. What is broadcasting?
+10. What is broadcasting?
 Broadcasting is the ability of pytorch to perform operations on tensors of different shapes. For example, if you have a rank-1 tensor and a rank-2 tensor, pytorch will automatically expand the rank-1 tensor to match the shape of the rank-2 tensor. This is useful because it allows you to perform operations on tensors of different shapes without having to manually reshape them.
 ```python
 >>> a = torch.tensor([1,2,3])
@@ -123,7 +130,7 @@ tensor([[[1, 2, 3],
          [4, 5, 6]]])
 
 ```
-1. Are metrics generally calculated using the training set, or the validation set? Why?
+11. Are metrics generally calculated using the training set, or the validation set? Why?
 Metrics are calculated using the validation set. We do this because we want to make sure the model is training to become generalized. If we used the training set, we would be optimizing the model to perform well on the training set, but we wouldn't know if it was generalizing well.
 1. What is SGD?
 SGD is a way of optimizing a function, say for examples $y=x^2$. SGD is a way of finding the minimum of this function. 
@@ -131,12 +138,12 @@ It does this by using the derivative to calculate the gradient, ie the slope at 
 1. Why does SGD use mini-batches?
 We use mini-batches in order to speed up the calculation in SGD. When we are optimizing, we are usually doing so over a large number of parameters. If we were to calculate the gradient for each parameter, it would take a long time. Instead, we can calculate the gradient for a small batch of parameters (as an average of the items in the  batch), and then use that to adjust the parameters in the batch. This is much faster than calculating the gradient for each parameter individually.
 1. What are the seven steps in SGD for machine learning?
-  1. Initialize the parameters with random values
-  1. Calculate the predictions
-  1. Calculate the loss
-  1. Calculate the gradients, which approximates how the paramters need to change to reduce the loss
-  1. Adjust the parameters by a small amount in the opposite direction of the gradient. ie If the gradient is positive, then decrease the parameter. If the gradient is negative, then increase the parameter.
-  1. Repeat steps 2-5 until the loss is small enough for our purposes
+    1. Initialize the parameters with random values
+    1. Calculate the predictions
+    1. Calculate the loss
+    1. Calculate the gradients, which approximates how the paramters need to change to reduce the loss
+    1. Adjust the parameters by a small amount in the opposite direction of the gradient. ie If the gradient is positive, then decrease the parameter. If the gradient is negative, then increase the parameter.
+    1. Repeat steps 2-5 until the loss is small enough for our purposes
 1. How do we initialize the weights in a model?
 Randomly. That's the "stochastic" part of SGD. We initialize the weights randomly because we don't know what the optimal weights are. We are trying to find them. So we start with random weights and then use SGD to adjust them.
 1. What is "loss"?
@@ -150,18 +157,20 @@ Nope, pytorch does it for us.
 1. Why can't we use accuracy as a loss function?
 Accuracy is generally steppy. Meaning that an improvement of 0.1% of our model a big deal, but might not immediately result in flipping one incorrect prediction to correct. But we want to be able to make small adjustments to our parameters. So we need a loss function that is smooth, meaning that small changes in the parameters will result in small changes in the loss. Smoothness also allows us to easily find gradients and derivatives.
 1. Draw the sigmoid function. What is special about its shape?
+Sigmoid takes all inputs and normalizes them into a value between 0 and 1. This allows easy optimization using SGD.
 ```python
 def sigmoid(x):
     return 1/(1+torch.exp(-x))
 ```
-Sigmoid takes all inputs and normalizes them into a value between 0 and 1. This allows easy optimization using SGD.
-1. What is the difference between a loss function and a metric?
+
+
+22. What is the difference between a loss function and a metric?
 A loss function has to be smooth, meaning that small changes in the parameters cause a response in the loss. Smoothness also allows us to easily find gradients and derivatives. A metric doesn't have to be smooth. It just has to be a way of measuring how well the model is performing. A metric, on the other hand, is really what *we* care about. We care about accuracy, but this might not be amendable to optimization using SGD. As a human, we want to focus on this, rather than loss, in judging our model's performance. The computer doing the optimizing, on the other hand, will use the loss to do its work. Interestingly loss is sometimes a compromise between two needs: our goal with the model and the ability of the function to be optimized using its gradient.
-1. What is the function to calculate new weights using a learning rate?
+23. What is the function to calculate new weights using a learning rate?
 ```python
 new_weight = old_weight - gradient*learning_rate
 ```
-1. What does the `DataLoader` class do?
+24. What does the `DataLoader` class do?
 A `DataLoader` allows any python collection to be treated as an iterator. It has built in functionality to create batches and allows for shuffling, which improves the performance of training, as it gives our model variety. Notice below that listing the `dl` multiple times will return different batches.
 ```python
 from torch.utils.data import DataLoader
@@ -174,7 +183,7 @@ from torch.utils.data import DataLoader
 >>> list(dl)
 [tensor([12, 25, 24,  4]), tensor([ 5, 22,  2,  3]), tensor([13, 21, 23, 14]), tensor([10, 17,  6, 18]), tensor([15,  8, 19, 20]), tensor([11, 16,  7,  9])]
 ```
-1. Write pseudocode showing the basic steps taken in each epoch for SGD.
+25. Write pseudocode showing the basic steps taken in each epoch for SGD.
 ```python
 for each opoch:
   - for each batch
@@ -184,13 +193,14 @@ for each opoch:
     - updates the parameters based on the gradients * lr
 ```
 
-1. Create a function that, if passed two arguments `[1,2,3,4]` and `'abcd'`, returns `[(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]`. What is special about that output data structure?
+26. Create a function that, if passed two arguments `[1,2,3,4]` and `'abcd'`, returns `[(1, 'a'), (2, 'b'), (3, 'c'), (4, 'd')]`. What is special about that output data structure?
 ```python
 def special(a, b):
   return list(zip(a,b))
 ```
 This structure is how pythorch expects to receive datasets. The first item in the tuple is the independant variable. The second item is the dependent variable. In other words these are the inputs and the targets of the model.
-1. What does `view` do in PyTorch?
+
+27. What does `view` do in PyTorch?
 View allows pytorch to change the shape of a tensor without changing its contents. The new shape has to be compatible with the existing contents.
 For example a `tensor([1,2,3,4])` can be reshaped into a `tensor([[1,2],[3,4]])` because the number of elements is the same.
 ```python
@@ -203,7 +213,7 @@ tensor([[1, 2, 3],
         [7, 8, 9]])
 ```
 
-1. What are the "bias" parameters in a neural network? Why do we need them?
+28. What are the "bias" parameters in a neural network? Why do we need them?
 The formula for a line is $y=w*x+b$. Bias is the $b$ in this formula. This allows our function to be more flexible, as in input of zero won't always have to result in an output of zero.
 1. What does the `@` operator do in Python?
 The `@` operator performs matrix multiplication.
@@ -218,11 +228,11 @@ We have to pass the data, the model, the loss function, and the optimizer functi
 - unpack our dl
 - calculate the loss, which implies making a prediciton with the model and comparing it to the actual label
 - calculate the gradients
-- update the parameters by parsm -= gradients * lr
+- update the parameters by param -= gradients * lr
 - zero the gradients
 ```
 
-1. What is "ReLU"? Draw a plot of it for values from `-2` to `+2`.
+34. What is "ReLU"? Draw a plot of it for values from `-2` to `+2`.
 A nonlinear function. For negative values its output is zero. For positive values its output is the input value.
 1. What is an "activation function"?
 These are the outputs of a layer in a nueral network.
@@ -232,5 +242,55 @@ These are the outputs of a layer in a nueral network.
 We use more because it allows us to have fewer input parameters, which makese the model faster to train.
 
 
+extra credit 😏:
+<details>
 1. Create your own implementation of `Learner` from scratch, based on the training loop shown in this chapter.
+
+Here's some out put from that, but check the full notebook for better context
+{{< embed test_learner.ipynb >}}
+
+This is some scratch code.
+<details>
+```python
+class Learner():
+  def __init__(self, model, loss_func, optimizer, data):
+    self.model = model
+    self.loss_func = loss_func
+    self.optimizer = optimizer
+    self.data = data
+
+  def fit(self, epochs):
+    for epoch in range(epochs):
+      for xb, yb in self.data:
+        preds = self.model(xb)
+        loss = self.loss_func(preds, yb)
+        loss.backward()
+        self.optimizer.step()
+        self.optimizer.zero_grad()
+
+class Optimizer():
+  def __init__(self, params, lr):
+    self.params = list(params)
+    self.lr = lr
+  
+  def step(self):
+    for p in self.params:
+      p -= p.grad * self.lr
+
+  def zero_grad(self):
+    for p in self.params:
+      p.grad = None
+
+model = nn.Linear(1,1)
+optimizer = Optimizer(model.parameters(), lr=0.1)
+loss_func = F.mse_loss
+data = DataLoader([(x,y) for x,y in zip(xs,ys)], batch_size=1, shuffle=True)
+learner = Learner(model, loss_func, optimizer, data)
+
+learner.fit(10)
+
+```
+</details>
 1. Complete all the steps in this chapter using the full MNIST datasets (that is, for all digits, not just 3s and 7s). This is a significant project and will take you quite a bit of time to complete! You'll need to do some of your own research to figure out how to overcome some obstacles you'll meet on the way.
+
+</details>
