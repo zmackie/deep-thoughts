@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zmackie.com/blog.html</loc>
-    <lastmod>2023-11-17T18:34:38.271Z</lastmod>
+    <lastmod>2023-11-20T18:23:04.095Z</lastmod>
   </url>
   <url>
     <loc>https://zmackie.com/posts/week2/post.html</loc>
@@ -27,5 +27,13 @@
   <url>
     <loc>https://zmackie.com/index.html</loc>
     <lastmod>2023-11-17T18:34:37.651Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zmackie.com/posts/lesson 4/post.html</loc>
+    <lastmod>2023-11-20T18:23:05.615Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zmackie.com/posts/lesson 4/test_learner.html</loc>
+    <lastmod>2023-11-20T18:23:03.355Z</lastmod>
   </url>
 </urlset>
