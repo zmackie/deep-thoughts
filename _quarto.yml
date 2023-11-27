@@ -15,6 +15,7 @@ format:
   html:
     theme: 
       dark: yeti
+      light: yeti
     css: styles.css
 
 
