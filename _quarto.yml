@@ -13,9 +13,7 @@ website:
         href: https://github.com/zmackie
 format:
   html:
-    theme: 
-      dark: yeti
-      light: yeti
+    theme: slate
     css: styles.css
 
 
