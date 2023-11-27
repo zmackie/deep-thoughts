@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://zmackie.com/blog.html</loc>
-    <lastmod>2023-11-20T18:23:04.095Z</lastmod>
-  </url>
-  <url>
     <loc>https://zmackie.com/posts/week2/post.html</loc>
-    <lastmod>2023-11-17T18:34:37.341Z</lastmod>
-  </url>
-  <url>
-    <loc>https://zmackie.com/posts/lesson 3/test_learner.html</loc>
-    <lastmod>2023-11-17T18:34:36.401Z</lastmod>
-  </url>
-  <url>
-    <loc>https://zmackie.com/posts/week1/post.html</loc>
-    <lastmod>2023-11-17T18:34:34.501Z</lastmod>
-  </url>
-  <url>
-    <loc>https://zmackie.com/posts/lesson 3/post.html</loc>
-    <lastmod>2023-11-17T18:34:36.061Z</lastmod>
-  </url>
-  <url>
-    <loc>https://zmackie.com/posts/learning observations/post.html</loc>
-    <lastmod>2023-11-17T18:34:36.821Z</lastmod>
-  </url>
-  <url>
-    <loc>https://zmackie.com/index.html</loc>
-    <lastmod>2023-11-17T18:34:37.651Z</lastmod>
+    <lastmod>2023-11-27T17:50:58.840Z</lastmod>
   </url>
   <url>
     <loc>https://zmackie.com/posts/lesson 4/post.html</loc>
-    <lastmod>2023-11-20T18:23:05.615Z</lastmod>
+    <lastmod>2023-11-27T17:50:57.616Z</lastmod>
   </url>
   <url>
-    <loc>https://zmackie.com/posts/lesson 4/test_learner.html</loc>
-    <lastmod>2023-11-20T18:23:03.355Z</lastmod>
+    <loc>https://zmackie.com/posts/week1/post.html</loc>
+    <lastmod>2023-11-27T17:50:54.366Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zmackie.com/posts/lesson 3/test_learner.html</loc>
+    <lastmod>2023-11-27T17:50:51.538Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zmackie.com/blog.html</loc>
+    <lastmod>2023-11-27T17:50:50.585Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zmackie.com/index.html</loc>
+    <lastmod>2023-11-27T17:50:51.083Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zmackie.com/posts/lesson 3/post.html</loc>
+    <lastmod>2023-11-27T17:50:53.672Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zmackie.com/posts/lesson 4/try2-hupd-tf.html</loc>
+    <lastmod>2023-11-27T17:50:55.330Z</lastmod>
+  </url>
+  <url>
+    <loc>https://zmackie.com/posts/learning observations/post.html</loc>
+    <lastmod>2023-11-27T17:50:58.136Z</lastmod>
   </url>
 </urlset>
