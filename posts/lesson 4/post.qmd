@@ -33,9 +33,7 @@ I played with reproducing the results using a different model, `distilbert-base-
 
 Here's what I've got so far. Its not working yet 😏:
 <details>
-
-{{< embed try2-hupd-tf.ipynb echo=true >}}
-
+[Kaggle Notebook](https://www.kaggle.com/zanadar/hupd-patent-model-to-classifier)
 </details>
 
 ## Quiz

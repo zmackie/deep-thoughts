@@ -14,8 +14,8 @@ website:
 format:
   html:
     theme: 
-      dark: sketchy
-      light: sketchy
+      dark: yeti
+      light: yeti
     css: styles.css
 
 

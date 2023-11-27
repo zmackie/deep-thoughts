@@ -245,7 +245,5 @@ We use more because it allows us to have fewer input parameters, which makese th
 extra credit 😏:
 <details>
 1. Create your own implementation of `Learner` from scratch, based on the training loop shown in this chapter.
-
-{{< embed test_learner.ipynb echo=true >}}
-
+[kaggle notebook](https://www.kaggle.com/zanadar/learner-from-scratch)
 </details>
