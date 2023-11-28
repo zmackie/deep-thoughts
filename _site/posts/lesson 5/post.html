@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Zander Mackie">
+<meta name="dcterms.date" content="2023-11-28">
+<meta name="description" content="Recap, quiz, and sharing post for lesson 5">
 
-<title>Giant Morons 🧠 - Giant Morons</title>
+<title>Giant Morons 🧠 - FastAI Lesson 5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +26,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,40 +62,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -104,7 +74,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Giant Morons 🧠</span>
     </a>
   </div>
@@ -115,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
  <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item compact">
@@ -131,273 +101,86 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Giant Morons</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="Part 1">Part 1 <span class="quarto-category-count">(6)</span></div><div class="category" data-category="fastai">fastai <span class="quarto-category-count">(6)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fastai-lesson-5" id="toc-fastai-lesson-5" class="nav-link active" data-scroll-target="#fastai-lesson-5">FastAI Lesson 5</a>
+  <ul class="collapse">
+  <li><a href="#tenacious-animal" id="toc-tenacious-animal" class="nav-link" data-scroll-target="#tenacious-animal">Tenacious Animal</a></li>
+  <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">FastAI Lesson 5</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">fastai</div>
+    <div class="quarto-category">Part 1</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Recap, quiz, and sharing post for lesson 5
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zander Mackie </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 28, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="fastai-lesson-5" class="level1">
+<h1>FastAI Lesson 5</h1>
+<section id="tenacious-animal" class="level2">
+<h2 class="anchored" data-anchor-id="tenacious-animal">Tenacious Animal</h2>
+<p align="center">
+<img src="polar_bear.jpg" alt="Polar bear">
+</p><figcaption align="center">
+Polar bears can wait for hours or even days to catch their prey.
+</figcaption>
+<p></p>
+</section>
+<section id="recap" class="level2">
+<h2 class="anchored" data-anchor-id="recap">Recap</h2>
+<p>This lesson was about tabular data. Firstly we looked at recreating a simple linear model in python. This used sum product with a series of coefficients broadcast across our dataset. We used SGD to optimize this. Then we looked at creating a simple neural network to do the same thing. This was a single hidden layer with a single output layer. We used pytorch for this and optimized with SGD using the gradients on the tensors. Finally we looked at constructing the most basic “deep” neural network. This was a series of hidden layers, a relu, and an output layer. This was very fiddly in terms of parameters, the size of things, how they were initialized. This motivated the need for a higher level library like fastai, which was demonstrated in the second notebook. This took about 5 lines of code to do the same thing as the previous notebook.</p>
+<p>Finally Jeremy introduced a few new concepts for machine learning, specifically binary splits and random forests. The idea of a binary split is to find some fact about your data that divides it in two. For example with the titanic dataset, is the person male or female? Then we examine the dependent variable with respect to that split. Given a series of binary splits, getting finer and finer granularity we can build a decision tree. The random forest is a collection of decision trees, each one trained on a subset of the data. The random forest then takes the average of all the trees to make a prediction.</p>
+<p>Jeremy recommended using random forests as a way to understand datasets and as an initial baseline when working with tabular data. This is because they are fast to train and can give you a good idea of what is going on with your data, including things like which features are of particular importance (in the titanic dataset, sex is hugely predictive of survival, for example).</p>
+<p>I’m going to ignore the quiz this week for purposes of making progress. I’ll come back to review the book chapter later, but I’d like to move ahead with the course.</p>
 
 
+</section>
+</section>
 
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="fastai,Part 1" data-listing-date-sort="1701147600000" data-listing-file-modified-sort="1701193529106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/lesson 5/post.html"> <p class="card-img-top"><img src="posts/lesson 5/polar_bear.jpg" alt="Polar bear"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/lesson 5/post.html">
-<h3 class="no-anchor listing-title">
-FastAI Lesson 5
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('fastai'); return false;">
-fastai
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Part 1'); return false;">
-Part 1
-</div>
-</div>
-<a href="./posts/lesson 5/post.html">
-<div class="listing-description">
-<p>Recap, quiz, and sharing post for lesson 5</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/lesson 5/post.html">
-<div class="listing-date">
-Nov 28, 2023
-</div>
-<div class="listing-author">
-Zander Mackie
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="fastai,Part 1" data-listing-date-sort="1700974800000" data-listing-file-modified-sort="1701186568679" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
-<div class="thumbnail">
-<p><a href="./posts/lesson 4/post.html"> <p class="card-img-top"><img src="posts/lesson 4/dung_beetle.jpg" alt="Sublime's custom image"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/lesson 4/post.html">
-<h3 class="no-anchor listing-title">
-FastAI Lesson 4
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('fastai'); return false;">
-fastai
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Part 1'); return false;">
-Part 1
-</div>
-</div>
-<a href="./posts/lesson 4/post.html">
-<div class="listing-description">
-<p>Recap, quiz, and sharing post for lesson 4</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/lesson 4/post.html">
-<div class="listing-date">
-Nov 26, 2023
-</div>
-<div class="listing-author">
-Zander Mackie
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="fastai,Part 1" data-listing-date-sort="1700197200000" data-listing-file-modified-sort="1701095508256" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/learning observations/post.html"> <p class="card-img-top"><img src="posts/learning observations/hippo.jpg" alt="A hippo"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/learning observations/post.html">
-<h3 class="no-anchor listing-title">
-A Checkin on what’s working
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('fastai'); return false;">
-fastai
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Part 1'); return false;">
-Part 1
-</div>
-</div>
-<a href="./posts/learning observations/post.html">
-<div class="listing-description">
-<p>Some observations and thoughts about my learning process so far</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/learning observations/post.html">
-<div class="listing-date">
-Nov 17, 2023
-</div>
-<div class="listing-author">
-Zander Mackie
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="fastai,Part 1" data-listing-date-sort="1700024400000" data-listing-file-modified-sort="1701114173805" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18">
-<div class="thumbnail">
-<p><a href="./posts/lesson 3/post.html"> <p class="card-img-top"><img src="posts/lesson 3/honey_badger.jpg" alt="Sublime's custom image"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/lesson 3/post.html">
-<h3 class="no-anchor listing-title">
-FastAI Lesson 3
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('fastai'); return false;">
-fastai
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Part 1'); return false;">
-Part 1
-</div>
-</div>
-<a href="./posts/lesson 3/post.html">
-<div class="listing-description">
-<p>Recap, quiz, and sharing post for lesson 3</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/lesson 3/post.html">
-<div class="listing-date">
-Nov 15, 2023
-</div>
-<div class="listing-author">
-Zander Mackie
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="fastai,Part 1" data-listing-date-sort="1699851600000" data-listing-file-modified-sort="1701095508267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
-<div class="thumbnail">
-<p><a href="./posts/week2/post.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
-<div class="body">
-<a href="./posts/week2/post.html">
-<h3 class="no-anchor listing-title">
-FastAI Lesson 2
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('fastai'); return false;">
-fastai
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Part 1'); return false;">
-Part 1
-</div>
-</div>
-<a href="./posts/week2/post.html">
-<div class="listing-description">
-<p>Recap, quiz, and sharing post for lesson 2</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/week2/post.html">
-<div class="listing-date">
-Nov 13, 2023
-</div>
-<div class="listing-author">
-Zander Mackie
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="fastai,Part 1" data-listing-date-sort="1699333200000" data-listing-file-modified-sort="1701095508267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
-<div class="thumbnail">
-<p><a href="./posts/week1/post.html"> <p class="card-img-top"><img src="posts/week1/beans.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/week1/post.html">
-<h3 class="no-anchor listing-title">
-FastAI Week 1
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('fastai'); return false;">
-fastai
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Part 1'); return false;">
-Part 1
-</div>
-</div>
-<a href="./posts/week1/post.html">
-<div class="listing-description">
-<p>Recap, quiz, and sharing post for week 1</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/week1/post.html">
-<div class="listing-date">
-Nov 7, 2023
-</div>
-<div class="listing-author">
-Zander Mackie
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

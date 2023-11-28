@@ -1,0 +1,30 @@
+---
+title: 'FastAI Lesson 5'
+date: '2023-11-28'
+categories: ['fastai', 'Part 1']
+description: 'Recap, quiz, and sharing post for lesson 5'
+execute: 
+  message: false
+  warning: false
+editor_options: 
+  chunk_output_type: console
+---
+
+# FastAI Lesson 5
+
+## Tenacious Animal
+
+<p align="center">
+  <img src="polar_bear.jpg" alt="Polar bear"/>
+  <figcaption align="center">Polar bears can wait for hours or even days to catch their prey.</figcaption>
+</p>
+
+## Recap
+
+This lesson was about tabular data. Firstly we looked at recreating a simple linear model in python. This used sum product with a series of coefficients broadcast across our dataset. We used SGD to optimize this. Then we looked at creating a simple neural network to do the same thing. This was a single hidden layer with a single output layer. We used pytorch for this and optimized with SGD using the gradients on the tensors. Finally we looked at constructing the most basic "deep" neural network. This was a series of hidden layers, a relu, and an output layer. This was very fiddly in terms of parameters, the size of things, how they were initialized. This motivated the need for a higher level library like fastai, which was demonstrated in the second notebook. This took about 5 lines of code to do the same thing as the previous notebook.
+
+Finally Jeremy introduced a few new concepts for machine learning, specifically binary splits and random forests. The idea of a binary split is to find some fact about your data that divides it in two. For example with the titanic dataset, is the person male or female? Then we examine the dependent variable with respect to that split. Given a series of binary splits, getting finer and finer granularity we can build a decision tree. The random forest is a collection of decision trees, each one trained on a subset of the data. The random forest then takes the average of all the trees to make a prediction.
+
+Jeremy recommended using random forests as a way to understand datasets and as an initial baseline when working with tabular data. This is because they are fast to train and can give you a good idea of what is going on with your data, including things like which features are of particular importance (in the titanic dataset, sex is hugely predictive of survival, for example).
+
+I'm going to ignore the quiz this week for purposes of making progress. I'll come back to review the book chapter later, but I'd like to move ahead with the course.

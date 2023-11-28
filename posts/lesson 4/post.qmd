@@ -1,6 +1,6 @@
 ---
 title: 'FastAI Lesson 4'
-date: '2023-11-20'
+date: '2023-11-26'
 categories: ['fastai', 'Part 1']
 description: 'Recap, quiz, and sharing post for lesson 4'
 execute: 
