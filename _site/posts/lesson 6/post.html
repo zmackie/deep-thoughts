@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zander Mackie">
+<meta name="dcterms.date" content="2023-11-29">
+<meta name="description" content="Recap, quiz, and sharing post for lesson 6">
+
+<title>Giant Morons 🧠 - FastAI Lesson 6</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Giant Morons 🧠</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../blog.html" rel="" target="">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/zmackie" rel="" target=""><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fastai-lesson-5" id="toc-fastai-lesson-5" class="nav-link active" data-scroll-target="#fastai-lesson-5">FastAI Lesson 5</a>
+  <ul class="collapse">
+  <li><a href="#tenacious-animal" id="toc-tenacious-animal" class="nav-link" data-scroll-target="#tenacious-animal">Tenacious Animal</a></li>
+  <li><a href="#recap" id="toc-recap" class="nav-link" data-scroll-target="#recap">Recap</a></li>
+  <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">Quiz</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">FastAI Lesson 6</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">fastai</div>
+    <div class="quarto-category">Part 1</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Recap, quiz, and sharing post for lesson 6
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zander Mackie </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 29, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="fastai-lesson-5" class="level1">
+<h1>FastAI Lesson 5</h1>
+<section id="tenacious-animal" class="level2">
+<h2 class="anchored" data-anchor-id="tenacious-animal">Tenacious Animal</h2>
+<p align="center">
+<img src="tardigrade.jpg" alt="Water bear">
+</p><figcaption align="center">
+It’s important to note that while tardigrades are incredibly resilient, they are not invincible, and there are conditions and stressors that can ultimately kill them.
+</figcaption>
+<p></p>
+</section>
+<section id="recap" class="level2">
+<h2 class="anchored" data-anchor-id="recap">Recap</h2>
+<p>This lesson was a continuation of some of the ideas of the previous lesson about tabular data (I sort of conflated these two in my previous recap). It also continued some of the earlier lesson on computer vision, demonstrating some new techniques like ensembling. Introduced <code>convnext</code> model, which is an improvement in accuracy and memory and speed on <code>imagenet</code>. Talked about some crucial techniques for dealing with less performant training situations and larger models, including gradient accumulation. This technique updated the model weights continuously during an epoch per-batch. This allows training larger models without needing a GPU with more RAM, which is kinda neat!</p>
+<p>Jeremy also introduced some techniques for competing on Kaggle, emphasizing that the most crucial things are a) creating a good test set b) iteration speed. This jives with my intuitions and experience with developing software and my own work. In situations where iterating is slow, it becomes incredibly hard to make forward progress. The anecdote I’ve heard about this is regarding an art class (pottery or photography): the students who make <em>lots</em> of things imperfectly, rather than focussing on perfecting a single thing, go on to build mastery and create the most artful work. Jeremy shared a story about a highly decorated practitioner focussing on making a single perfect model, but coming in literal last place because they failed to iterate.</p>
+</section>
+<section id="quiz" class="level2">
+<h2 class="anchored" data-anchor-id="quiz">Quiz</h2>
+<p>I got chatGPT to generate some quiz questions for me because this material covered the same book chapter as the last lesson:</p>
+<section id="machine-learning-and-data-science-quiz" class="level4">
+<h4 class="anchored" data-anchor-id="machine-learning-and-data-science-quiz">Machine Learning and Data Science Quiz</h4>
+<ol type="1">
+<li><strong>TwoR Model</strong>
+<ul>
+<li>What is the TwoR model, and how does it differ from more complex machine learning models? TwoR is a model that uses two rules to make predictions. It is a simple model that is easy to understand and explain, but it is not very accurate. Another name for it is binary split.</li>
+</ul></li>
+<li><strong>Creating a Decision Tree</strong>
+<ul>
+<li>Describe the basic process of creating a decision tree. What are the key steps involved? Evaluate groups of data and split them into smaller groups based on the most important feature. Repeat this process until the groups are small enough to make predictions.</li>
+</ul></li>
+<li><strong>Gini Impurity</strong>
+<ul>
+<li>What is Gini impurity, and how is it used in the context of decision trees? Gini impurity is a measure of how often a randomly chosen element from the set would be incorrectly labeled if it were randomly labeled according to the distribution of labels in the subset. It is used to determine which feature to split on.</li>
+</ul></li>
+<li><strong>Making a Submission</strong>
+<ul>
+<li>What are the key considerations to keep in mind when preparing to make a submission in a data science competition? Make sure the submission is in the correct format and that the data is in the correct order.</li>
+</ul></li>
+<li><strong>Bagging</strong>
+<ul>
+<li>Explain the concept of bagging in machine learning. How does it contribute to the performance of ensemble models? Bagging is a method of combining the results of multiple models trained on different subsets of the same data. It reduces variance and helps to avoid overfitting.</li>
+</ul></li>
+<li><strong>Random Forest Introduction</strong>
+<ul>
+<li>What is a random forest, and how does it improve upon the idea of a single decision tree? A random forest is an ensemble learning method that uses a collection of decision trees to make predictions. It improves upon a single decision tree by reducing variance and avoiding overfitting.</li>
+</ul></li>
+<li><strong>Creating a Random Forest</strong>
+<ul>
+<li>Outline the steps involved in creating a random forest model.</li>
+</ul>
+<ol type="1">
+<li>Create a collection of decision trees.</li>
+<li>Train each tree on a different subset of the data.</li>
+<li>Make predictions using the average of the predictions from all the trees.</li>
+</ol></li>
+<li><strong>Feature Importance in Random Forest</strong>
+<ul>
+<li>How is feature importance determined in a random forest, and why is it useful? Feature importance is determined by calculating the average decrease in gini impurity across all trees in the forest. It is useful for determining which features are most important in making predictions.</li>
+</ul></li>
+<li><strong>Adding Trees to a Random Forest</strong>
+<ul>
+<li>What are the effects of adding more trees to a random forest model? Adding more trees to a random forest model increases the accuracy of the model, but it also increases the time required to train the model.</li>
+</ul></li>
+<li><strong>Out-of-Bag (OOB) Error</strong>
+<ul>
+<li>What is OOB error in the context of random forests, and how is it calculated? OOB error is the error rate of a random forest model on the training set. The validation set in bagging is all the data <em>not</em> included in the training set. It is calculated by averaging the error rates of all trees in the forest.</li>
+</ul></li>
+<li><strong>Model Interpretation</strong>
+<ul>
+<li>Discuss the importance and methods of model interpretation in machine learning. Model interpretation is important because it allows us to understand how a model works and why it makes the predictions it does. It can be done by looking at feature importance, partial dependence, and SHAP values. This is easier in the case of a random forest than a nueral network.</li>
+</ul></li>
+<li><strong>Removing Redundant Features</strong>
+<ul>
+<li>Why is it important to remove redundant features from a model, and how can it be achieved? It is important to remove redundant features from a model because they can cause overfitting and reduce the accuracy of the model. This can be achieved by looking at feature importance and removing features with low importance.</li>
+</ul></li>
+<li><strong>Partial Dependence</strong>
+<ul>
+<li>Explain what partial dependence is and how it helps in understanding machine learning models. Partial dependence is a method of interpreting machine learning models by looking at the relationship between a feature and the target variable while holding all other features constant. It helps us understand how a model works and why it makes the predictions it does.</li>
+</ul></li>
+<li><strong>Explaining Predictions</strong>
+<ul>
+<li>How can you explain why a particular prediction was made by a machine learning model? You can explain why a particular prediction was made by a machine learning model by looking at feature importance, partial dependence, and SHAP values.</li>
+</ul></li>
+<li><strong>Overfitting in Random Forest</strong>
+<ul>
+<li>Is it possible to overfit a random forest? Under what circumstances might this occur? Yes, it is possible to overfit a random forest. This can occur when the trees in the forest are too deep, ie when there are too many leaf nodes. This happens because the trees are too specific and don’t generalize well to new data.</li>
+</ul></li>
+<li><strong>Gradient Boosting</strong>
+<ul>
+<li>What is gradient boosting, and how does it differ from other ensemble methods like random forests? Gradient boosting is an ensemble method that uses a collection of weak learners to make predictions. It differs from other ensemble methods like random forests because it uses a collection of weak learners instead of a collection of decision trees.</li>
+</ul></li>
+<li><strong>fastkaggle</strong>
+<ul>
+<li>What is fastkaggle, and how does it assist in Kaggle competitions? fastkaggle is a library that makes it easier to use Kaggle datasets in fastai. It assists in Kaggle competitions by providing a way to download and use Kaggle datasets in fastai. It also provides a way to submit predictions to Kaggle.</li>
+</ul></li>
+<li><strong>fastcore.parallel</strong>
+<ul>
+<li>Describe the functionality of fastcore.parallel and its application in data processing. fastcore.parallel is a library that makes it easier to use parallel processing in fastai. It can be used to speed up data processing by running multiple processes at once across the cores of a machine.</li>
+</ul></li>
+<li><strong>Image Resizing Methods</strong>
+<ul>
+<li>Explain the significance of <code>item_tfms=Resize(480, method='squish')</code> in image processing. This is a method of resizing images to a specific size. It is used to make sure that all images are the same size before they are fed into a model.</li>
+</ul></li>
+<li><strong>Criteria for Evaluating Models</strong>
+<ul>
+<li>What are some key criteria for evaluating the performance of machine learning models? Some key criteria for evaluating the performance of machine learning models are accuracy, precision, recall, and F1 score.</li>
+</ul></li>
+</ol>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
