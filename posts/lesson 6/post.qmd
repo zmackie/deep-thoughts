@@ -1,0 +1,29 @@
+---
+title: 'FastAI Lesson 6'
+date: '2023-11-29'
+categories: ['fastai', 'Part 1']
+description: 'Recap, quiz, and sharing post for lesson 6'
+execute: 
+  message: false
+  warning: false
+editor_options: 
+  chunk_output_type: console
+---
+
+# FastAI Lesson 5
+
+## Tenacious Animal
+
+<p align="center">
+  <img src="tardigarde.jpg" alt="Water bear"/>
+  <figcaption align="center">They live in some of the harshest environments on the planet.</figcaption>
+</p>
+
+## Recap
+
+This lesson was a continuation of some of the ideas of the previous lesson about tabular data (I sort of conflated these two in my previous recap). It also continued some of the earlier lesson on computer vision, demonstrating some new techniques like ensembling. Introduced `convnext` model, which is an improvement in accuracy and memory and speed on `imagenet`. Talked about some crucial techniques for dealing with less performant training situations and larger models, including gradient accumulation. This technique updated the model weights continuously during an epoch per-batch. This allows training larger models without needing a GPU with more RAM, which is kinda neat!
+
+Jeremy also introduced some techniques for competing on Kaggle, emphasizing that the most crucial things are a) creating a good test set b) iteration speed. This jives with my intuitions and experience with developing software and my own work. In situations where iterating is slow, it becomes incredibly hard to make forward progress. The anecdote I've heard about this is regarding an art class (pottery or photography): the students who make *lots* of things imperfectly, rather than focussing on perfecting a single thing, go on to build mastery and create the most artful work. Jeremy shared a story about a highly decorated practitioner focussing on making a single perfect model, but coming in literal last place because they failed to iterate. 
+
+## Quiz
+I got chatGPT to generate some quiz questions for me because this material covered the same book chapter as the last lesson.
