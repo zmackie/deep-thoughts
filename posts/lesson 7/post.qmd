@@ -1,8 +1,8 @@
 ---
-title: 'FastAI Lesson 6'
+title: 'FastAI lesson 7'
 date: '2023-11-29'
 categories: ['fastai', 'Part 1']
-description: 'Recap, quiz, and sharing post for lesson 6'
+description: 'Recap, quiz, and sharing post for lesson 7'
 execute: 
   message: false
   warning: false
@@ -10,7 +10,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# FastAI Lesson 6
+# FastAI Lesson 7
 
 ## Tenacious Animal
 
