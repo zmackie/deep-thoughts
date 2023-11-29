@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zander Mackie">
-<meta name="dcterms.date" content="2023-11-29">
+<meta name="dcterms.date" content="2023-11-30">
 <meta name="description" content="Recap, quiz, and sharing post for lesson 7">
 
 <title>Giant Morons 🧠 - FastAI lesson 7</title>
@@ -149,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 29, 2023</p>
+      <p class="date">November 30, 2023</p>
     </div>
   </div>
   
@@ -172,104 +172,33 @@ It’s important to note that while tardigrades are incredibly resilient, they a
 </section>
 <section id="recap" class="level2">
 <h2 class="anchored" data-anchor-id="recap">Recap</h2>
-<p>This lesson was a continuation of some of the ideas of the previous lesson about tabular data (I sort of conflated these two in my previous recap). It also continued some of the earlier lesson on computer vision, demonstrating some new techniques like ensembling. Introduced <code>convnext</code> model, which is an improvement in accuracy and memory and speed on <code>imagenet</code>. Talked about some crucial techniques for dealing with less performant training situations and larger models, including gradient accumulation. This technique updated the model weights continuously during an epoch per-batch. This allows training larger models without needing a GPU with more RAM, which is kinda neat!</p>
-<p>Jeremy also introduced some techniques for competing on Kaggle, emphasizing that the most crucial things are a) creating a good test set b) iteration speed. This jives with my intuitions and experience with developing software and my own work. In situations where iterating is slow, it becomes incredibly hard to make forward progress. The anecdote I’ve heard about this is regarding an art class (pottery or photography): the students who make <em>lots</em> of things imperfectly, rather than focussing on perfecting a single thing, go on to build mastery and create the most artful work. Jeremy shared a story about a highly decorated practitioner focussing on making a single perfect model, but coming in literal last place because they failed to iterate.</p>
 </section>
 <section id="quiz" class="level2">
 <h2 class="anchored" data-anchor-id="quiz">Quiz</h2>
-<p>I got chatGPT to generate some quiz questions for me because this material covered the same book chapter as the last lesson:</p>
-<section id="machine-learning-and-data-science-quiz" class="level4">
-<h4 class="anchored" data-anchor-id="machine-learning-and-data-science-quiz">Machine Learning and Data Science Quiz</h4>
 <ol type="1">
-<li><strong>TwoR Model</strong>
-<ul>
-<li>What is the TwoR model, and how does it differ from more complex machine learning models? TwoR is a model that uses two rules to make predictions. It is a simple model that is easy to understand and explain, but it is not very accurate. Another name for it is binary split.</li>
-</ul></li>
-<li><strong>Creating a Decision Tree</strong>
-<ul>
-<li>Describe the basic process of creating a decision tree. What are the key steps involved? Evaluate groups of data and split them into smaller groups based on the most important feature. Repeat this process until the groups are small enough to make predictions.</li>
-</ul></li>
-<li><strong>Gini Impurity</strong>
-<ul>
-<li>What is Gini impurity, and how is it used in the context of decision trees? Gini impurity is a measure of how often a randomly chosen element from the set would be incorrectly labeled if it were randomly labeled according to the distribution of labels in the subset. It is used to determine which feature to split on.</li>
-</ul></li>
-<li><strong>Making a Submission</strong>
-<ul>
-<li>What are the key considerations to keep in mind when preparing to make a submission in a data science competition? Make sure the submission is in the correct format and that the data is in the correct order.</li>
-</ul></li>
-<li><strong>Bagging</strong>
-<ul>
-<li>Explain the concept of bagging in machine learning. How does it contribute to the performance of ensemble models? Bagging is a method of combining the results of multiple models trained on different subsets of the same data. It reduces variance and helps to avoid overfitting.</li>
-</ul></li>
-<li><strong>Random Forest Introduction</strong>
-<ul>
-<li>What is a random forest, and how does it improve upon the idea of a single decision tree? A random forest is an ensemble learning method that uses a collection of decision trees to make predictions. It improves upon a single decision tree by reducing variance and avoiding overfitting.</li>
-</ul></li>
-<li><strong>Creating a Random Forest</strong>
-<ul>
-<li>Outline the steps involved in creating a random forest model.</li>
-</ul>
-<ol type="1">
-<li>Create a collection of decision trees.</li>
-<li>Train each tree on a different subset of the data.</li>
-<li>Make predictions using the average of the predictions from all the trees.</li>
-</ol></li>
-<li><strong>Feature Importance in Random Forest</strong>
-<ul>
-<li>How is feature importance determined in a random forest, and why is it useful? Feature importance is determined by calculating the average decrease in gini impurity across all trees in the forest. It is useful for determining which features are most important in making predictions.</li>
-</ul></li>
-<li><strong>Adding Trees to a Random Forest</strong>
-<ul>
-<li>What are the effects of adding more trees to a random forest model? Adding more trees to a random forest model increases the accuracy of the model, but it also increases the time required to train the model.</li>
-</ul></li>
-<li><strong>Out-of-Bag (OOB) Error</strong>
-<ul>
-<li>What is OOB error in the context of random forests, and how is it calculated? OOB error is the error rate of a random forest model on the training set. The validation set in bagging is all the data <em>not</em> included in the training set. It is calculated by averaging the error rates of all trees in the forest.</li>
-</ul></li>
-<li><strong>Model Interpretation</strong>
-<ul>
-<li>Discuss the importance and methods of model interpretation in machine learning. Model interpretation is important because it allows us to understand how a model works and why it makes the predictions it does. It can be done by looking at feature importance, partial dependence, and SHAP values. This is easier in the case of a random forest than a nueral network.</li>
-</ul></li>
-<li><strong>Removing Redundant Features</strong>
-<ul>
-<li>Why is it important to remove redundant features from a model, and how can it be achieved? It is important to remove redundant features from a model because they can cause overfitting and reduce the accuracy of the model. This can be achieved by looking at feature importance and removing features with low importance.</li>
-</ul></li>
-<li><strong>Partial Dependence</strong>
-<ul>
-<li>Explain what partial dependence is and how it helps in understanding machine learning models. Partial dependence is a method of interpreting machine learning models by looking at the relationship between a feature and the target variable while holding all other features constant. It helps us understand how a model works and why it makes the predictions it does.</li>
-</ul></li>
-<li><strong>Explaining Predictions</strong>
-<ul>
-<li>How can you explain why a particular prediction was made by a machine learning model? You can explain why a particular prediction was made by a machine learning model by looking at feature importance, partial dependence, and SHAP values.</li>
-</ul></li>
-<li><strong>Overfitting in Random Forest</strong>
-<ul>
-<li>Is it possible to overfit a random forest? Under what circumstances might this occur? Yes, it is possible to overfit a random forest. This can occur when the trees in the forest are too deep, ie when there are too many leaf nodes. This happens because the trees are too specific and don’t generalize well to new data.</li>
-</ul></li>
-<li><strong>Gradient Boosting</strong>
-<ul>
-<li>What is gradient boosting, and how does it differ from other ensemble methods like random forests? Gradient boosting is an ensemble method that uses a collection of weak learners to make predictions. It differs from other ensemble methods like random forests because it uses a collection of weak learners instead of a collection of decision trees.</li>
-</ul></li>
-<li><strong>fastkaggle</strong>
-<ul>
-<li>What is fastkaggle, and how does it assist in Kaggle competitions? fastkaggle is a library that makes it easier to use Kaggle datasets in fastai. It assists in Kaggle competitions by providing a way to download and use Kaggle datasets in fastai. It also provides a way to submit predictions to Kaggle.</li>
-</ul></li>
-<li><strong>fastcore.parallel</strong>
-<ul>
-<li>Describe the functionality of fastcore.parallel and its application in data processing. fastcore.parallel is a library that makes it easier to use parallel processing in fastai. It can be used to speed up data processing by running multiple processes at once across the cores of a machine.</li>
-</ul></li>
-<li><strong>Image Resizing Methods</strong>
-<ul>
-<li>Explain the significance of <code>item_tfms=Resize(480, method='squish')</code> in image processing. This is a method of resizing images to a specific size. It is used to make sure that all images are the same size before they are fed into a model.</li>
-</ul></li>
-<li><strong>Criteria for Evaluating Models</strong>
-<ul>
-<li>What are some key criteria for evaluating the performance of machine learning models? Some key criteria for evaluating the performance of machine learning models are accuracy, precision, recall, and F1 score.</li>
-</ul></li>
+<li>How do you do gradient accumulation in fastai? You divide the loss by the number of accumulation steps in your training loop and then you pass a callback to Learner that accumulates the gradients, using the desired effective batch size as an argument.</li>
+<li>What is ensembling and how is it different with nueral networks vs random forests?</li>
+<li>What is TTA?</li>
+<li>What is k-fold cross validation? Is it better than doing straight ensembling?</li>
+<li>How do you use it to get a better result from your test set?</li>
+<li>What is cross entropy loss?</li>
+<li>what is softmax?</li>
+<li>Why can’t you use MSE as a loss function when trying to create a classifier?</li>
+<li>What is binary cross entropy loss? What case is it for?</li>
+<li>Why is it that a multi-target model can have a higher accuracy than a single-target model, for the same data categorization task?</li>
+<li>What is the last layer of most neural networks used for? What is are the activations of the last layer of a neural network?</li>
+<li>What is an embedding and what is it used for?</li>
+<li>What are latent factors? Why are they used?</li>
+<li>Implment a basic dot product model in PyTorch.</li>
+<li>How can you use a sigmoid to create a range of predictions?</li>
+<li>What is the use of the bias in a dot product model? Explain conceptually and mathematically.</li>
+<li>What is another name for weight decay? What does weight decay do?</li>
+<li>Why do we use it? What is the equation for it?</li>
+<li>What is weight decay balancing?</li>
+<li>What is regularization?</li>
 </ol>
 
 
-</section>
 </section>
 </section>
 
